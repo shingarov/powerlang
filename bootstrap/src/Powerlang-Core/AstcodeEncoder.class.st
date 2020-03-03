@@ -249,6 +249,11 @@ AstcodeEncoder >> visitBlock: aBlockNode [
 ]
 
 { #category : #visiting }
+AstcodeEncoder >> visitBraceNode: aBraceNode [
+	^self notYetImplemented
+]
+
+{ #category : #visiting }
 AstcodeEncoder >> visitCascade: aCascadeNode [
 	self
 		nextTypePut: CascadeId;

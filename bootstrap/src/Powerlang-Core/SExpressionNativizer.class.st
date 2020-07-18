@@ -352,7 +352,7 @@ SExpressionNativizer >> emitSend: selector [
 { #category : #accessing }
 SExpressionNativizer >> environment: aNativizationEnvironment [
 	environment := aNativizationEnvironment.
-	assembler wordSize: environment wordSize
+	assembler := aNativizationEnvironment createJIT.
 ]
 
 { #category : #services }
@@ -362,9 +362,7 @@ SExpressionNativizer >> falseLiteral [
 
 { #category : #services }
 SExpressionNativizer >> initialize [
-	super initialize.
-	assembler := TemplateAssembler64 on: #[  ] writeStream.
-
+	super initialize
 ]
 
 { #category : #services }
@@ -520,17 +518,9 @@ SExpressionNativizer >> nativeCode [
 
 { #category : #services }
 SExpressionNativizer >> nativeCodeFor: aCompiledMethod [
-	^ [ self
+	^self
 		compile: aCompiledMethod;
-		nativeCode ]
-		on: Error
-		do: [ :e | 
-						e halt.
-
-			Transcript
-				print: aCompiledMethod signature;
-				cr.
-			NativeCode new code: #[16rCC] ]
+		nativeCode
 ]
 
 { #category : #services }

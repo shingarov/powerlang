@@ -14,7 +14,7 @@ NativeCode >> code [
 
 { #category : #'as yet unclassified' }
 NativeCode >> code: bytes [
-	code := bytes.
+	code := bytes
 
 ]
 

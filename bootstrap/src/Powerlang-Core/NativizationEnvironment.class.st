@@ -55,6 +55,13 @@ NativizationEnvironment >> completeInitialization [
 	cachedNativizer := self newExpressionNativizer 
 ]
 
+{ #category : #services }
+NativizationEnvironment >> createJIT [
+"... decide what JIT I want... hardcode for now..."
+"	^(TemplateAssembler64 on: #[  ] writeStream) 	wordSize: (self wordSize); yourself"
+		^Nativizer new
+]
+
 { #category : #initialization }
 NativizationEnvironment >> initialize [
 	busy := false.
